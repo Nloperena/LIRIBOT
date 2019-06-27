@@ -26,14 +26,20 @@ spotify
 };
 
 
-function concertThis(){
-    axios.get("https://rest.bandsintown.com/artists/"+userInput+"/events?app_id=codingbootcamp&date=upcoming").then
-    (function(response){
-      // console.log(response)
-        console.log("Name of venue is: "+ (response.data.id));
-        // console.log("Venue location: "+ (response.data.Location));
-        // console.log("Date of Event is: "+ (response.data.Event));
-    })
+function concertThis() {
+  axios.get("https://rest.bandsintown.com/artists/" + userInput + "/events?app_id=codingbootcamp").then
+      (function (response) {
+        for (i = 0; i < 5; i++){
+          console.log("\n-------------------------------------------\n")
+          console.log("Artist venue, location, times and date.")
+          console.log("\n-------------------------------------------\n")
+          console.log("Venue names is: " + (response.data[i].venue.name));
+          console.log("Venue locations is: " + (response.data[i].venue.city + ", " + response.data[i].venue.country));
+          console.log("Date and times of following events are: " + (response.data[i].datetime));
+          console.log("\n-------------------------------------------\n")
+          };
+         
+      })
 }
 
 
