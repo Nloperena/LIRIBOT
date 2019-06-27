@@ -9,7 +9,7 @@ var Spotify = require("node-spotify-api")
 var spotify = new Spotify(keys.spotify);
 
 var whatToDo = process.argv[2];
-var userInput = process.argv[3];
+var userInput = process.argv.splice(3, process.argv.length).join(" ");
 
 
 
@@ -35,7 +35,7 @@ function concertThis() {
           console.log("\n-------------------------------------------\n")
           console.log("Venue names is: " + (response.data[i].venue.name));
           console.log("Venue locations is: " + (response.data[i].venue.city + ", " + response.data[i].venue.country));
-          console.log("Date and times of following events are: " + (response.data[i].datetime));
+          console.log("Date and times of following events are: " + moment(response.data[i].datetime, "YYYY-MM-DDTHH:mm:ss").format("MM/DD/YYYY, h:mm A"));
           console.log("\n-------------------------------------------\n")
           };
          
